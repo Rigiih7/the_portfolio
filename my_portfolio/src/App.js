@@ -1,7 +1,8 @@
 //import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Button, Card, CardGroup } from 'react-bootstrap';
+import { Button, Card, CardGroup,Form } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 
 function App() {
     const [avatarURL, setAvatarURL] = useState();
@@ -10,7 +11,11 @@ function App() {
     const [githubUsername1, setGitHubUsername1] = useState();
     const [repoData, setRepoData] = useState();
     const [repoData1, setRepoData1] = useState();
-
+    
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+    };
+    
   async function repoDataURL() {
     //Get repo data about github user
     await fetch("https://api.github.com/users/Rigiih7/repos")
@@ -108,9 +113,24 @@ function App() {
       {repoData1}
       </Card> 
       </CardGroup>
+    <Card style={{ width: '50rem' }}>
+      <Card.Img variant="top" src="images/contributions.png"/>
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
     </div>
+    
+    
+   
+
+
   );
 
 }
-
 export default App;
