@@ -40,3 +40,7 @@
 .card-spacing{
   margin-right: 10px; /* Adjust the value based on your preferred indentation */
 }
+
+.custom-input {
+  max-width: 300px;
+}

@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Button, Card, CardGroup,Form } from 'react-bootstrap';
+import { Button, Card, CardGroup,Form,InputGroup } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 
 function App() {
@@ -97,7 +97,7 @@ function App() {
         <Card.Title>
           {githubUsername}
         </Card.Title>  
-        <Button variant="primary" onClick = {repoDataURL}>List my repositories!</Button>
+        <Button variant="secondary" onClick = {repoDataURL}>List my repositories!</Button>
       </Card.Body>
       {repoData}
     </Card>
@@ -108,7 +108,7 @@ function App() {
           {githubUsername1}
         </Card.Title>
         
-        <Button variant="primary" onClick = {repoData1URL}>List my repositories1!</Button>
+        <Button variant="secondary" onClick = {repoData1URL}>List my repositories1!</Button>
       </Card.Body>
       {repoData1}
       </Card> 
@@ -116,12 +116,22 @@ function App() {
     <Card style={{ width: '50rem' }}>
       <Card.Img variant="top" src="images/contributions.png"/>
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Title>GitHub worth Estimate</Card.Title>
+        
+
+        <InputGroup className="mb-4 d-flex justify-content-center align-items-center">
+        <InputGroup.Text id="basic-addon1" >@</InputGroup.Text>
+        <Form.Control
+          className='custom-input'
+          placeholder="GitHub Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+      </InputGroup>
+
+
+
+                <Button variant="secondary"> $ Calculate worth</Button>
       </Card.Body>
     </Card>
     </div>
