@@ -44,3 +44,27 @@
 .custom-input {
   max-width: 300px;
 }
+
+.img-height{
+  height: 10px;
+}
+
+.Sidebar {
+  width: /* set the width of your sidebar */;
+}
+
+.App {
+  margin-left: /* set the same width as your sidebar */;
+}
+
+.app-container {
+  display: flex;
+}
+
+.Sidebar {
+  width: /* set the width of your sidebar */;
+}
+
+.App {
+  margin-left: /* set the same width as your sidebar */;
+}
