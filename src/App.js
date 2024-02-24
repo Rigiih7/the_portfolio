@@ -107,7 +107,7 @@ function App() {
       <Container>  
      
          <Row>         
-          <Col xs={12} md={12}>
+          <Col xs={12} md={11}>
           <div className='App justify-content-center align-items-center d-flex flex-column mt-5'>
           <CardGroup>
           <Card style={{ width: '18rem' }} className='mb-2 p-2 card-spacing border-5'>
@@ -132,7 +132,7 @@ function App() {
             {repoData1}
             </Card> 
             </CardGroup>
-            <Card style={{ width: '60rem' }} className="mx-auto mb-3" >
+            <Card style={{ width: '60rem' }} className="mx-auto mb-3 border-dark" >
             <Card.Img variant="top" src="images/contributions.jpeg" style={{ width: '100%'}} className='img-hieght'/>
             <Card.Body>
               <Card.Title>GitHub worth Estimate</Card.Title>
