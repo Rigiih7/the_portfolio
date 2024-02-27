@@ -107,8 +107,8 @@ function App() {
       <Container>  
      
          <Row>         
-          <Col xs={12} md={11}>
-          <div className='App justify-content-center align-items-center d-flex flex-column mt-5'>
+          <Col xs={12} md={12}>
+          <div className='App justify-content-center align-items-center d-flex flex-column mt-5 mb-5'>
           <CardGroup>
           <Card style={{ width: '18rem' }} className='mb-2 p-2 card-spacing border-5'>
             <Card.Img variant="top" src={avatarURL} />
