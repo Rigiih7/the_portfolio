@@ -12,5 +12,20 @@ code {
     monospace;
 }
 
+/* Your sidebar styles */
+.Sidebar {
+  width: 220x;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow-y: auto; /* Allows scrolling if the content is taller than the sidebar */
+}
+
+/* Adjust the main content to create space for the fixed sidebar */
+.main-content {
+  margin-left: 220px; /* Adjust according to your sidebar width */
+}
+
 
 
