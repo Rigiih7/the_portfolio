@@ -42,7 +42,7 @@ function App() {
   }
   async function repoData1URL() {
     //Get repo data about github user
-    await fetch("https://api.github.com/users/TamaraLumumba/repos")
+    await fetch("https://api.github.com/users/Rigiih/repos")
       .then((res1) => res1.json())
       .then(
         (result1) => {
@@ -77,7 +77,7 @@ function App() {
         }
       );
 
-      fetch("https://api.github.com/users/TamaraLumumba")
+      fetch("https://api.github.com/users/Rigiih")
       .then((res1) => res1.json())
       .then(
         (result1) => {
