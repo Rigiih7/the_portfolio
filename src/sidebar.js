@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './index.css';
-import './navbar.css';
 import {
   CDBSidebar,
   CDBSidebarContent,
