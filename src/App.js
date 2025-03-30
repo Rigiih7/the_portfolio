@@ -1,165 +1,149 @@
-//import logo from './logo.svg';
-import { useEffect, useState } from 'react';
-import './App.css';
-import { Button, Card, CardGroup,Form,InputGroup, Container, Row, Col} from 'react-bootstrap';
-//import Image from 'react-bootstrap/Image';
-import { withRouter } from "react-router";
-import Sidebar from './sidebar.js';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import Sidebar from './sidebar.js';
+import './App.css';
+
+const Section = ({ title, content, image, imageLeft }) => {
+  return (
+    <Row className="align-items-center my-5">
+      {imageLeft && (
+        <Col md={6}>
+          <img src={image} alt={title} className="img-fluid rounded" />
+        </Col>
+      )}
+      <Col md={6}>
+        <h2 className="fw-bold">{title}</h2>
+        <p>{content}</p>
+      </Col>
+      {!imageLeft && (
+        <Col md={6}>
+          <img src={image} alt={title} className="img-fluid rounded" />
+        </Col>
+      )}
+    </Row>
+  );
+};
+
+const ProjectSection = ({ projects }) => {
+  return (
+    <Container>
+      <h2 className="text-center fw-bold my-5">Projects</h2>
+      {projects.map((project, index) => (
+        <Row className="align-items-center my-4" key={index}>
+          {index % 2 === 0 && (
+            <Col md={6}>
+              <h3 className="fw-bold">{project.title}</h3>
+              <p>{project.description}</p>
+            </Col>
+          )}
+          <Col md={6}>
+            <img src={project.image} alt={project.title} className="img-fluid rounded" />
+          </Col>
+          {index % 2 !== 0 && (
+            <Col md={6}>
+              <h3 className="fw-bold">{project.title}</h3>
+              <p>{project.description}</p>
+            </Col>
+          )}
+        </Row>
+      ))}
+    </Container>
+  );
+};
 
 function App() {
-    const [avatarURL, setAvatarURL] = useState();
-    const [avatar1URL, setAvatar1URL] = useState ();
-    const [githubUsername, setGitHubUsername] = useState();
-    const [githubUsername1, setGitHubUsername1] = useState();
-    const [repoData, setRepoData] = useState();
-    const [repoData1, setRepoData1] = useState();
-    
-    //const handleSubmit = async (event) => {
-    // event.preventDefault();
-    //};
-    
-  async function repoDataURL() {
-    //Get repo data about github user
-    await fetch("https://api.github.com/users/Rigiih7/repos")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          console.log(36, result);
-          const list = result.map((item) => (
-            <div className="text-center">
-              <a target="_blank" href={item.svn_url}>
-                {item.name}
-              </a>
-            </div>
-          ));
-          setRepoData(list);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
-  async function repoData1URL() {
-    //Get repo data about github user
-    await fetch("https://api.github.com/users/Rigiih/repos")
-      .then((res1) => res1.json())
-      .then(
-        (result1) => {
-          console.log(36, result1);
-          const list = result1.map((item1) => (
-            <div className="text-center">
-              <a target="_blank" href={item1.svn_url}>
-                {item1.name}
-              </a>
-            </div>
-          ));
-          setRepoData1(list);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
+  const githubUsername = 'Rigiih7';
+  const [avatarURL, setAvatarURL] = useState('');
+  const [repoCount, setRepoCount] = useState(0);
+  const [followers, setFollowers] = useState(0);
+  const [following, setFollowing] = useState(0);
+  const [publicGists, setPublicGists] = useState(0);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchGitHubData = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/users/${githubUsername}`);
+        if (!response.ok) throw new Error("User not found");
+        const data = await response.json();
+        setAvatarURL(data.avatar_url);
+        setRepoCount(data.public_repos);
+        setFollowers(data.followers);
+        setFollowing(data.following);
+        setPublicGists(data.public_gists);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+    fetchGitHubData();
+  }, []);
 
-    useEffect(() => {
-      fetch("https://api.github.com/users/Rigiih7")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-          setAvatarURL(result.avatar_url);
-          setGitHubUsername(result.login);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-
-      fetch("https://api.github.com/users/Rigiih")
-      .then((res1) => res1.json())
-      .then(
-        (result1) => {
-          console.log(result1);
-          setAvatar1URL(result1.avatar_url); // Fix: Use result1 for the second user
-          setGitHubUsername1(result1.login); // Fix: Use result1 for the second user
+  const projects = [
+    {
+      title: "Spotcash Mobile Banking System",
+      description: "SpotCash is a Tangazoletu Mobile Banking platform used by more than 70 formal and registered financial institutions ranging from Banks, Microfinance Institutions, and SACCOs in Kenya.",
+      image: "/spotcash.jpg"
     },
-    (error) => {
-      console.log(error);
+    {
+      title: "SpotPay",
+      description: "SpotPay is a creative payment solution to make simple, easy payments.",
+      image: "/spotpay.jpg"
+    },
+    {
+      title: "EDMS",
+      description: "The system streamlines document storage, sharing, and accessibility, centralizing all documents in a secure digital repository.",
+      image: "/edms.jpg"
     }
-  );
+  ];
 
-    }, []);
-    return (
-      
-      <div className="app-container d-flex vh-100">
-      
-      <div className='d-flex vh-100'>
-        <Router>
-        <div className="Sidebar d-flex">
-          <Sidebar />
-        </div>
+  return (
+    <div className="app-container d-flex">
+      <Router>
+        <Sidebar />
       </Router>
+
+      <div className="content-container">
+        <Container className="mt-5">
+          {/* Hero Section */}
+          <Row className="text-center align-items-center text-white py-5 rounded" style={{
+            backgroundImage: "url('images/contributions.jpeg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}>
+            <Col>
+              <img src={avatarURL} alt="GitHub Avatar" className="rounded-circle mb-3" style={{ width: '100px', border: '3px solid white' }} />
+              <h2>@{githubUsername}</h2>
+              <p>Public Repositories: <strong>{repoCount}</strong></p>
+              <p>Followers: <strong>{followers}</strong> | Following: <strong>{following}</strong></p>
+              <p>Public Gists: <strong>{publicGists}</strong></p>
+            </Col>
+          </Row>
+
+          {/* Portfolio Sections */}
+          <Row className="text-center my-4">
+            <Col>
+              <FaGithub size={30} />
+              <FaLinkedin size={30} />
+              <FaEnvelope size={30} />
+            </Col>
+          </Row>
+
+          <Section title="About Me" content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development." image="/about.jpg" imageLeft={true} />
+          <Section title="Skills" content="Proficient in Java, Spring Boot, AWS, CI/CD pipelines, and cloud security." image="/skills.jpg" imageLeft={false} />
+          <Section title="Tech Stack" content="Expertise in AWS (EC2, S3, IAM), Docker, Kubernetes, Terraform, and modern DevOps practices." image="/techstack.jpg" imageLeft={true} />
+
+          {/* Projects Section */}
+          <ProjectSection projects={projects} />
+
+          <Section title="Certifications" content="AWS Cloud Practitioner Certified, pursuing Solutions Architect Associate." image="/certifications.jpg" imageLeft={true} />
+          <Section title="Contact Me" content="Reach out for collaboration opportunities via LinkedIn or email." image="/contact.jpg" imageLeft={false} />
+        </Container>
       </div>
-      
-      
-      <Container>  
-     
-         <Row>         
-          <Col xs={12} md={12}>
-          <div className='App justify-content-center align-items-center d-flex flex-column mt-5 mb-5'>
-          <CardGroup>
-          <Card style={{ width: '18rem' }} className='mb-2 p-2 card-spacing border-5'>
-            <Card.Img variant="top" src={avatarURL} />
-            <Card.Body>
-              <Card.Title>
-                {githubUsername}
-              </Card.Title>  
-              <Button variant="secondary" onClick = {repoDataURL}>List my repositories!</Button>
-            </Card.Body>
-            {repoData}
-          </Card>
-          <Card style={{ width: '18rem' }} className='mb-2 p-2 card-spacing border-5'>
-            <Card.Img variant="top" src={avatar1URL} />
-            <Card.Body>
-              <Card.Title>
-                {githubUsername1}
-              </Card.Title>
-              
-              <Button variant="secondary" onClick = {repoData1URL} >List my repositories1!</Button>
-            </Card.Body>
-            {repoData1}
-            </Card> 
-            </CardGroup>
-            <Card style={{ width: '60rem' }} className="mx-auto mb-3 border-dark" >
-            <Card.Img variant="top" src="images/contributions.jpeg" style={{ width: '100%'}} className='img-hieght'/>
-            <Card.Body>
-              <Card.Title>GitHub worth Estimate</Card.Title>
-              
-           
-              <InputGroup className="mb-2  d-flex justify-content-center align-items-center">
-              <InputGroup.Text id="basic-addon1" >@</InputGroup.Text>
-              <Form.Control
-                className='custom-input'
-                placeholder="GitHub Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-              />
-            </InputGroup>
-           
-           
-
-                <Button variant="secondary" className='mb-1'> $ Calculate worth</Button>
-      </Card.Body>
-       </Card>
     </div>
-    </Col>
-      </Row>
-      </Container>
-    </div>
-   
   );
-
 }
+
 export default App;

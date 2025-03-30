@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
+import './navbar.css';
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -10,11 +11,11 @@ import {
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   return (
-    <div ClassName='sidebar' style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
-      <CDBSidebar textColor="#fff" backgroundColor=" #000000">
-        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+    <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+      <CDBSidebar textColor="#fff" backgroundColor="#000000">
+        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large" onClick={toggleSidebar}></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
             Menu
           </a>
@@ -34,7 +35,6 @@ const Sidebar = () => {
             <NavLink exact to="/analytics" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
             </NavLink>
-
             <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="exclamation-circle">404 page</CDBSidebarMenuItem>
             </NavLink>
@@ -42,19 +42,11 @@ const Sidebar = () => {
         </CDBSidebarContent>
 
         <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div
-            style={{
-              padding: '20px 5px',
-            }}
-          >
-            @Rigiih2024
-          </div>
+          <div style={{ padding: '20px 5px' }}>@Rigiih2024</div>
         </CDBSidebarFooter>
       </CDBSidebar>
     </div>
   );
-
-
 };
 
 export default Sidebar;
