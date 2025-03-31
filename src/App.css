@@ -130,3 +130,12 @@ h2.fw-bold {
   margin-left: 15px;  /* Adds spacing between icons */
   margin-right: 15px;
 }
+
+.section-image {
+  border-radius: 50%; /* Fully rounded */
+  width: 200px; /* Adjust size */
+  height: 200px;
+  object-fit: cover; /* Prevent distortion */
+  display: block;
+  margin: auto; /* Center the image */
+}

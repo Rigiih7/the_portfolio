@@ -13,21 +13,23 @@ const Section = ({ title, content, image, imageLeft }) => {
         <h2 className="fw-bold">{title}</h2>
       </Col>
       {imageLeft && (
-        <Col md={6}>
-          <img src={image} alt={title} className="img-fluid rounded" />
+        <Col md={6} className="text-center">
+          <img src={image} alt={title} className="img-fluid section-image" />
         </Col>
       )}
       <Col md={6}>
         <p>{content}</p>
       </Col>
       {!imageLeft && (
-        <Col md={6}>
-          <img src={image} alt={title} className="img-fluid rounded" />
+        <Col md={6} className="text-center">
+         <img src={image} alt={title} className={`img-fluid ${title === "About Me" ? "rounded-image" : ""}`} />
+
         </Col>
       )}
     </Row>
   );
 };
+
 
 const ProjectSection = ({ projects }) => {
   return (
@@ -155,8 +157,15 @@ function App() {
 
 
 
-          <Section title="About Me" content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development." image="/about.jpg" imageLeft={true} />
-          <Section title="Skills" content="Proficient in Java, Spring Boot, AWS, CI/CD pipelines, and cloud security." image="/skills.jpg" imageLeft={false} />
+          <Section 
+            title="About Me" 
+            content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development." 
+            image="images/aboutMe.jpeg" 
+            imageLeft={true} 
+            className="rounded-image"
+          />
+
+          <Section title="Skills" content="Proficient in Java, Spring Boot, AWS, CI/CD pipelines, and cloud security." image="images/skills1.png" imageLeft={false} />
           <Section title="Tech Stack" content="Expertise in AWS (EC2, S3, IAM), Docker, Kubernetes, Terraform, and modern DevOps practices." image="/techstack.jpg" imageLeft={true} />
 
           <ProjectSection projects={projects} />
