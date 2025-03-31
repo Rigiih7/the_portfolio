@@ -105,4 +105,10 @@
   width: calc(100% - 80px);
 }
 
+h2.fw-bold {
+  text-align: center !important;
+  color: rgba(150, 124, 75, 0.85) !important; /* A mix of orange and yellow */
+  margin-bottom: 15px; /* Adds spacing below the title */
+}
+
 

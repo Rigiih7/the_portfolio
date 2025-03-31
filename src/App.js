@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaEnvelope, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import Sidebar from './sidebar.js';
 import './App.css';
 
 const Section = ({ title, content, image, imageLeft }) => {
   return (
     <Row className="align-items-center my-5">
+      <Col md={12} className="section-title-container">
+        <h2 className="fw-bold">{title}</h2>
+      </Col>
       {imageLeft && (
         <Col md={6}>
           <img src={image} alt={title} className="img-fluid rounded" />
         </Col>
       )}
       <Col md={6}>
-        <h2 className="fw-bold">{title}</h2>
         <p>{content}</p>
       </Col>
       {!imageLeft && (
@@ -29,29 +31,40 @@ const Section = ({ title, content, image, imageLeft }) => {
 const ProjectSection = ({ projects }) => {
   return (
     <Container>
-      <h2 className="text-center fw-bold my-5">Projects</h2>
+      <h2 className="fw-bold text-center">Projects</h2>
       {projects.map((project, index) => (
         <Row className="align-items-center my-4" key={index}>
-          {index % 2 === 0 && (
-            <Col md={6}>
-              <h3 className="fw-bold">{project.title}</h3>
-              <p>{project.description}</p>
-            </Col>
-          )}
-          <Col md={6}>
-            <img src={project.image} alt={project.title} className="img-fluid rounded" />
-          </Col>
-          {index % 2 !== 0 && (
-            <Col md={6}>
-              <h3 className="fw-bold">{project.title}</h3>
-              <p>{project.description}</p>
-            </Col>
+          {index % 2 === 0 ? (
+            // Even index: Image on the right, title+paragraph on the left
+            <>
+              <Col md={6}>
+                <h3 className="fw-bold">{project.title}</h3>
+                <p>{project.description}</p>
+              </Col>
+              <Col md={6} className="text-center">
+                <img src={project.image} alt={project.title} className="img-fluid rounded" />
+              </Col>
+            </>
+          ) : (
+            // Odd index: Image on the left, title+paragraph on the right
+            <>
+              <Col md={6} className="text-center">
+                <img src={project.image} alt={project.title} className="img-fluid rounded" />
+              </Col>
+              <Col md={6}>
+                <h3 className="fw-bold">{project.title}</h3>
+                <p>{project.description}</p>
+              </Col>
+            </>
           )}
         </Row>
       ))}
     </Container>
   );
 };
+
+
+
 
 function App() {
   const githubUsername = 'Rigiih7';
@@ -84,7 +97,7 @@ function App() {
   const projects = [
     {
       title: "Spotcash Mobile Banking System",
-      description: "SpotCash is a Tangazoletu Mobile Banking platform used by more than 70 formal and registered financial institutions ranging from Banks, Microfinance Institutions, and SACCOs in Kenya.",
+      description: "SpotCash is a Tangazoletu Mobile Banking platform used by more than 70 financial institutions in Kenya.",
       image: "/spotcash.jpg"
     },
     {
@@ -94,7 +107,7 @@ function App() {
     },
     {
       title: "EDMS",
-      description: "The system streamlines document storage, sharing, and accessibility, centralizing all documents in a secure digital repository.",
+      description: "The system streamlines document storage, sharing, and accessibility.",
       image: "/edms.jpg"
     }
   ];
@@ -107,7 +120,6 @@ function App() {
 
       <div className="content-container">
         <Container className="mt-5">
-          {/* Hero Section */}
           <Row className="text-center align-items-center text-white py-5 rounded" style={{
             backgroundImage: "url('images/contributions.jpeg')",
             backgroundSize: 'cover',
@@ -122,20 +134,20 @@ function App() {
             </Col>
           </Row>
 
-          {/* Portfolio Sections */}
           <Row className="text-center my-4">
-            <Col>
-              <FaGithub size={30} />
-              <FaLinkedin size={30} />
-              <FaEnvelope size={30} />
-            </Col>
-          </Row>
+          <Col>
+            <FaGithub size={30} className="mx-3" />
+            <FaLinkedin size={30} className="mx-3" />
+            <FaTwitter size={30} className="mx-3" />
+            <FaEnvelope size={30} className="mx-3" />
+          </Col>
+         </Row>
+
 
           <Section title="About Me" content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development." image="/about.jpg" imageLeft={true} />
           <Section title="Skills" content="Proficient in Java, Spring Boot, AWS, CI/CD pipelines, and cloud security." image="/skills.jpg" imageLeft={false} />
           <Section title="Tech Stack" content="Expertise in AWS (EC2, S3, IAM), Docker, Kubernetes, Terraform, and modern DevOps practices." image="/techstack.jpg" imageLeft={true} />
 
-          {/* Projects Section */}
           <ProjectSection projects={projects} />
 
           <Section title="Certifications" content="AWS Cloud Practitioner Certified, pursuing Solutions Architect Associate." image="/certifications.jpg" imageLeft={true} />
