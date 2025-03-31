@@ -136,12 +136,22 @@ function App() {
 
           <Row className="text-center my-4">
           <Col>
-            <FaGithub size={30} className="mx-3" />
-            <FaLinkedin size={30} className="mx-3" />
-            <FaTwitter size={30} className="mx-3" />
-            <FaEnvelope size={30} className="mx-3" />
+            <a href="https://github.com/Rigiih7" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
+              <FaGithub size={30} />
+            </a>
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
+              <FaLinkedin size={30} />
+            </a>
+            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
+              <FaTwitter size={30} />
+            </a>
+            <a href="mailto:your-email@example.com" className="social-icon mx-3">
+              <FaEnvelope size={30} />
+            </a>
           </Col>
-         </Row>
+          </Row>
+
+
 
 
           <Section title="About Me" content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development." image="/about.jpg" imageLeft={true} />

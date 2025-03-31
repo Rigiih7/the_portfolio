@@ -111,4 +111,22 @@ h2.fw-bold {
   margin-bottom: 15px; /* Adds spacing below the title */
 }
 
+.social-icon {
+  color: black !important;  /* Keeps the icons dark */
+  text-decoration: none;    /* Removes any underline */
+  font-size: 30px;         /* Ensures icons remain the right size */
+  transition: all 0.3s ease-in-out; /* Smooth hover effect */
+  display: inline-block; /* Ensures icons don't get affected by surrounding text styles */
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2)); /* Adds subtle shadow */
+}
 
+.social-icon:hover {
+  color: rgb(255, 136, 0); /* Changes to orange on hover */
+  transform: scale(1.1); /* Slightly enlarges on hover */
+  filter: drop-shadow(10px 10px 7px rgba(255, 136, 0, 0.4)); /* More intense shadow on hover */
+}
+
+.mx-3 {
+  margin-left: 15px;  /* Adds spacing between icons */
+  margin-right: 15px;
+}
