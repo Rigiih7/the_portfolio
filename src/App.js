@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaGithub, FaEnvelope, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';  // Import X (formerly Twitter) icon
 import Sidebar from './sidebar.js';
 import './App.css';
 
@@ -139,13 +140,13 @@ function App() {
             <a href="https://github.com/Rigiih7" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
               <FaGithub size={30} />
             </a>
-            <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
+            <a href="https://www.linkedin.com/in/brian-mwirigi/" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
               <FaLinkedin size={30} />
             </a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
-              <FaTwitter size={30} />
+            <a href="https://x.com/_Mwirigih" target="_blank" rel="noopener noreferrer" className="social-icon mx-3">
+              <FaXTwitter size={30} />
             </a>
-            <a href="mailto:your-email@example.com" className="social-icon mx-3">
+            <a href="mailto:mwirigihbrian@gmail.com" className="social-icon mx-3">
               <FaEnvelope size={30} />
             </a>
           </Col>
