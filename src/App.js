@@ -17,8 +17,16 @@ const Section = ({ title, content, image, imageLeft }) => {
           <img src={image} alt={title} className="img-fluid section-image" />
         </Col>
       )}
-      <Col md={6}>
-        <p>{content}</p>
+          <Col md={6}>
+        {Array.isArray(content) ? (
+          <ul className="skills-list">
+            {content.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>{content}</p>
+        )}
       </Col>
       {!imageLeft && (
         <Col md={6} className="text-center">
@@ -165,7 +173,20 @@ function App() {
             className="rounded-image"
           />
 
-          <Section title="Skills" content="Proficient in Java, Spring Boot, AWS, CI/CD pipelines, and cloud security." image="images/skills1.png" imageLeft={false} />
+          <Section
+           title="Skills" 
+           content={[
+            "Programming Languages: Java, Python (Django), JavaScript",
+            "Frameworks & Libraries: Spring Boot, React.js",
+            "Cloud & DevOps: AWS (EC2, S3, IAM, Lambda), Docker, Kubernetes, Terraform, CI/CD",
+            "Databases: MySQL, PostgreSQL, Oracle",
+            "Other Technologies: Git, REST APIs, Microservices"
+          ]}
+          
+           image="/images/skills1.png"
+           imageLeft={false}
+          />
+
           <Section title="Tech Stack" content="Expertise in AWS (EC2, S3, IAM), Docker, Kubernetes, Terraform, and modern DevOps practices." image="/techstack.jpg" imageLeft={true} />
 
           <ProjectSection projects={projects} />
