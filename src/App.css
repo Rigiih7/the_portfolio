@@ -49,9 +49,6 @@
   height: 10px;
 }
 
-.Sidebar {
-  width: /* set the width of your sidebar */;
-}
 
 .App {
   margin-left: 210px;/* set the same width as your sidebar */;
@@ -59,14 +56,6 @@
 
 .app-container {
   display: flex;
-}
-
-.Sidebar {
-  width: /* set the width of your sidebar */;
-}
-
-.App {
-  margin-left: /* set the same width as your sidebar */;
 }
 
 /* Sidebar Styling */
@@ -163,4 +152,13 @@ h2.fw-bold {
 .skills-list li:hover {
   transform: scale(1.05);
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.content-container {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.content-container.collapsed {
+  margin-left: 80px;
 }

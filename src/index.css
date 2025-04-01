@@ -30,5 +30,25 @@ code {
   text-align: center;
 }
 
+.sidebar {
+  transition: width 0.3s ease;
+  width: 250px;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+
+/* Content container (adjusts based on sidebar state) */
+.content-container {
+  margin-left: 250px;  /* Push main content right when sidebar is open */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Adjust content when sidebar is collapsed */
+.content-container.collapsed {
+  margin-left: 80px;
+}
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './index.css';
 import {
   CDBSidebar,
@@ -9,39 +9,43 @@ import {
   CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   return (
     <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <CDBSidebar textColor="#fff" backgroundColor="#000000">
-        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large" onClick={toggleSidebar}></i>}>
+        {/* Sidebar Header */}
+        <CDBSidebarHeader prefix={<FaBars onClick={toggleSidebar} aria-label="Toggle Menu" />}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
             Menu
           </a>
         </CDBSidebarHeader>
 
+        {/* Sidebar Content */}
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'activeClicked' : '')}>
               <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            <NavLink to="/tables" className={({ isActive }) => (isActive ? 'activeClicked' : '')}>
               <CDBSidebarMenuItem icon="table">Tables</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/profile" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
+            <NavLink to="/profile" className={({ isActive }) => (isActive ? 'activeClicked' : '')}>
+              <CDBSidebarMenuItem icon="user">Profile Page</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/analytics" activeClassName="activeClicked">
+            <NavLink to="/analytics" className={({ isActive }) => (isActive ? 'activeClicked' : '')}>
               <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="exclamation-circle">404 page</CDBSidebarMenuItem>
+            <NavLink to="/hero404" target="_blank" className={({ isActive }) => (isActive ? 'activeClicked' : '')}>
+              <CDBSidebarMenuItem icon="exclamation-circle">404 Page</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
+        {/* Sidebar Footer */}
         <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div style={{ padding: '20px 5px' }}>@Rigiih2024</div>
+          <div style={{ padding: '20px 5px' }}>@Rigiih {new Date().getFullYear()}</div>
         </CDBSidebarFooter>
       </CDBSidebar>
     </div>
