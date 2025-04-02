@@ -78,10 +78,26 @@ function App() {
   const [following, setFollowing] = useState(0);
   const [publicGists, setPublicGists] = useState(0);
   const [error, setError] = useState(null);
-  
-  // Sidebar Collapse State
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const toggleSidebar = () => setIsCollapsed(!isCollapsed);
+
+// Sidebar Collapse State
+const [isCollapsed, setIsCollapsed] = useState(false);
+const [isMobile, setIsMobile] = useState(false);
+
+const toggleSidebar = () => setIsCollapsed((prev) => !prev); // Define this function
+
+useEffect(() => {
+  const handleResize = () => {
+    const mobileView = window.innerWidth < 768;
+    setIsMobile(mobileView);
+    setIsCollapsed(mobileView); // Always collapse on mobile
+  };
+
+  handleResize(); // Ensure correct initial state on refresh
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
   useEffect(() => {
     const fetchGitHubData = async () => {
