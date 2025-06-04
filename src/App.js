@@ -50,13 +50,13 @@ const ProjectSection = ({ projects }) => {
                 <p>{project.description}</p>
               </Col>
               <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} className="img-fluid rounded" />
+                <img src={project.image} alt={project.title} style={{ width: '400px', height: 'auto' }} className="rounded" />
               </Col>
             </>
           ) : (
             <>
               <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} className="img-fluid rounded" />
+                <img src={project.image} alt={project.title} style={{ width: '400px', height: 'auto' }} className="rounded" />
               </Col>
               <Col md={6}>
                 <h3 className="fw-bold">{project.title}</h3>
@@ -122,17 +122,17 @@ useEffect(() => {
     {
       title: "Spotcash Mobile Banking System",
       description: "SpotCash is a Tangazoletu Mobile Banking platform used by more than 70 financial institutions in Kenya.",
-      image: "/spotcash.jpg"
+      image: "images/project4.png"
     },
     {
       title: "SpotPay",
       description: "SpotPay is a creative payment solution to make simple, easy payments.",
-      image: "/spotpay.jpg"
+      image: "/images/project4.png"
     },
     {
       title: "EDMS",
       description: "The system streamlines document storage, sharing, and accessibility.",
-      image: "/edms.jpg"
+      image: "images/project6.png"
     }
   ];
 
