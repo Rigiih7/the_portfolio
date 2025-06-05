@@ -187,7 +187,6 @@ useEffect(() => {
             imageLeft={false}
           />
           <ProjectSection projects={projects} />
-          <Section title="Certifications" content="AWS Cloud Practitioner Certified, pursuing Solutions Architect Associate." image="/certifications.jpg" imageLeft={true} />
           <Section title="Contact Me" content="Reach out for collaboration opportunities via LinkedIn or email." image="/contact.jpg" imageLeft={false} />
         </Container>
       </div>
