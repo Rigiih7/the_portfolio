@@ -50,13 +50,13 @@ const ProjectSection = ({ projects }) => {
                 <p>{project.description}</p>
               </Col>
               <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} style={{ width: '200px', height: 'auto' }} className="rounded" />
+                <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
               </Col>
             </>
           ) : (
             <>
               <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} style={{ width: '200px', height: 'auto' }} className="rounded" />
+                <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
               </Col>
               <Col md={6}>
                 <h3 className="fw-bold">{project.title}</h3>
