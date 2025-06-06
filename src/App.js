@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import Sidebar from './sidebar.js';
+//import Sidebar from './sidebar.js';
 import './App.css';
 
 const Section = ({ title, content, image, imageLeft }) => {
@@ -50,13 +50,13 @@ const ProjectSection = ({ projects }) => {
                 <p>{project.description}</p>
               </Col>
               <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} style={{ width: '400px', height: 'auto' }} className="rounded" />
+                <img src={project.image} alt={project.title} style={{ width: '200px', height: 'auto' }} className="rounded" />
               </Col>
             </>
           ) : (
             <>
               <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} style={{ width: '400px', height: 'auto' }} className="rounded" />
+                <img src={project.image} alt={project.title} style={{ width: '200px', height: 'auto' }} className="rounded" />
               </Col>
               <Col md={6}>
                 <h3 className="fw-bold">{project.title}</h3>
@@ -78,26 +78,6 @@ function App() {
   const [following, setFollowing] = useState(0);
   const [publicGists, setPublicGists] = useState(0);
   const [error, setError] = useState(null);
-
-// Sidebar Collapse State
-const [isCollapsed, setIsCollapsed] = useState(false);
-const [isMobile, setIsMobile] = useState(false);
-
-const toggleSidebar = () => setIsCollapsed((prev) => !prev); // Define this function
-
-useEffect(() => {
-  const handleResize = () => {
-    const mobileView = window.innerWidth < 768;
-    setIsMobile(mobileView);
-    setIsCollapsed(mobileView); // Always collapse on mobile
-  };
-
-  handleResize(); // Ensure correct initial state on refresh
-  window.addEventListener("resize", handleResize);
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
-
 
   useEffect(() => {
     const fetchGitHubData = async () => {
@@ -138,11 +118,7 @@ useEffect(() => {
 
   return (
     <div className="app-container d-flex">
-      <Router>
-        <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
-      </Router>
-
-      <div className={`content-container ${isCollapsed ? 'collapsed' : ''}`}>
+      <div className={`content-container`}>
         <Container className="mt-5">
           <Row className="text-center align-items-center text-white py-5 rounded" style={{
             backgroundImage: "url('images/contributions.jpeg')",
