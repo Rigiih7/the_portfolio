@@ -1,34 +1,53 @@
-import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import { Link } from "react-scroll";
-import './Navbar.css'; 
+import React, { useState } from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from 'react-scroll';
+import './Navbar.css'; // Make sure your styles are imported
 
 const CustomNavbar = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleNavClick = () => {
+    setExpanded(false); // Collapse the navbar after a link is clicked
+  };
+
   return (
     <Navbar
       expand="lg"
-      fixed="top"
       variant="dark"
+      fixed="top"
       className="navbar-dark-bg"
-      // You can add style here if needed, but your CSS should cover width and positioning
+      expanded={expanded}
+      onToggle={() => setExpanded(prev => !prev)}
     >
       <Container>
-        <Link to="home" smooth={true} duration={500} offset={-550} className="nav-link"> Brian Mwirigi</Link>
+        <Navbar.Brand>
+          <Link
+            to="home"
+            smooth={true}
+            duration={500}
+            offset={-550}
+            className="nav-link"
+            onClick={handleNavClick}
+          >
+            Brian Mwirigi
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link to="about" smooth={true} duration={500} offset={-80} className="nav-link">
-              About
-            </Link>
-            <Link to="skills" smooth={true} duration={500} offset={-80} className="nav-link">
-              Skills
-            </Link>
-            <Link to="projects" smooth={true} duration={500} className="nav-link">
-              Projects
-            </Link>
-            <Link to="contact" smooth={true} duration={500} className="nav-link">
-              Contact
-            </Link>
+            {['about', 'skills', 'projects', 'contact'].map(section => (
+              <Link
+                key={section}
+                to={section}
+                smooth={true}
+                duration={500}
+                offset={-100}
+                className="nav-link"
+                onClick={handleNavClick}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </Link>
+            ))}
           </Nav>
         </Navbar.Collapse>
       </Container>

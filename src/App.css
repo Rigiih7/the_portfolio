@@ -169,7 +169,7 @@ body {
 
 @media (max-width: 768px) {
   body {
-    padding-top: 38px; /* Slightly more for mobile collapsed navbar */
+    padding-top: 28px; /* Slightly more for mobile collapsed navbar */
   }
 }
 
