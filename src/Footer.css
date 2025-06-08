@@ -1,0 +1,9 @@
+.footer-dark {
+  background-color: #111;
+  border-top: 1px solid #333;
+}
+
+.footer-dark p {
+  margin: 0;
+  color: #bbb;
+}

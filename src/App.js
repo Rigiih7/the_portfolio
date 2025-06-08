@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-//import Sidebar from './sidebar.js';
+import CustomNavbar from './Navbar';
 import './App.css';
 
 const Section = ({ title, content, image, imageLeft }) => {
@@ -118,6 +118,7 @@ function App() {
 
   return (
     <div className="app-container d-flex">
+      < CustomNavbar />
       <div className={`content-container`}>
         <Container className="mt-5">
           <Row className="text-center align-items-center text-white py-5 rounded" style={{
