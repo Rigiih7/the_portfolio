@@ -1,72 +1,76 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import CustomNavbar from './Navbar';
+import { Element } from 'react-scroll';
 import './App.css';
 
-const Section = ({ title, content, image, imageLeft }) => {
+const Section = ({ title, content, image, imageLeft, id }) => {
   return (
-    <Row className="align-items-center my-5">
-      <Col md={12} className="section-title-container">
-        <h2 className="fw-bold">{title}</h2>
-      </Col>
-      {imageLeft && (
-        <Col md={6} className="text-center">
-          <img src={image} alt={title} className="img-fluid section-image" />
+    <Element name={id} className="my-5">
+      <Row className="align-items-center">
+        <Col md={12} className="section-title-container">
+          <h2 className="fw-bold">{title}</h2>
         </Col>
-      )}
-      <Col md={6}>
-        {Array.isArray(content) ? (
-          <ul className="skills-list">
-            {content.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>{content}</p>
+        {imageLeft && (
+          <Col md={6} className="text-center">
+            <img src={image} alt={title} className="img-fluid section-image" />
+          </Col>
         )}
-      </Col>
-      {!imageLeft && (
-        <Col md={6} className="text-center">
-          <img src={image} alt={title} className={`img-fluid ${title === "About Me" ? "rounded-image" : ""}`} />
+        <Col md={6}>
+          {Array.isArray(content) ? (
+            <ul className="skills-list">
+              {content.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>{content}</p>
+          )}
         </Col>
-      )}
-    </Row>
+        {!imageLeft && (
+          <Col md={6} className="text-center">
+            <img src={image} alt={title} className={`img-fluid ${title === "About Me" ? "rounded-image" : ""}`} />
+          </Col>
+        )}
+      </Row>
+    </Element>
   );
 };
 
 const ProjectSection = ({ projects }) => {
   return (
-    <Container>
-      <h2 className="fw-bold text-center">Projects</h2>
-      {projects.map((project, index) => (
-        <Row className="align-items-center my-4" key={index}>
-          {index % 2 === 0 ? (
-            <>
-              <Col md={6}>
-                <h3 className="fw-bold">{project.title}</h3>
-                <p>{project.description}</p>
-              </Col>
-              <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
-              </Col>
-            </>
-          ) : (
-            <>
-              <Col md={6} className="text-center">
-                <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
-              </Col>
-              <Col md={6}>
-                <h3 className="fw-bold">{project.title}</h3>
-                <p>{project.description}</p>
-              </Col>
-            </>
-          )}
-        </Row>
-      ))}
-    </Container>
+    <Element name="projects" className="my-5">
+      <Container>
+        <h2 className="fw-bold text-center">Projects</h2>
+        {projects.map((project, index) => (
+          <Row className="align-items-center my-4" key={index}>
+            {index % 2 === 0 ? (
+              <>
+                <Col md={6}>
+                  <h3 className="fw-bold">{project.title}</h3>
+                  <p>{project.description}</p>
+                </Col>
+                <Col md={6} className="text-center">
+                  <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
+                </Col>
+              </>
+            ) : (
+              <>
+                <Col md={6} className="text-center">
+                  <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
+                </Col>
+                <Col md={6}>
+                  <h3 className="fw-bold">{project.title}</h3>
+                  <p>{project.description}</p>
+                </Col>
+              </>
+            )}
+          </Row>
+        ))}
+      </Container>
+    </Element>
   );
 };
 
@@ -117,9 +121,9 @@ function App() {
   ];
 
   return (
-    <div className="app-container d-flex">
-      < CustomNavbar />
-      <div className={`content-container`}>
+    <div className="app-container d-flex flex-column">
+      <CustomNavbar />
+      <div className="content-container">
         <Container className="mt-5">
           <Row className="text-center align-items-center text-white py-5 rounded" style={{
             backgroundImage: "url('images/contributions.jpeg')",
@@ -151,9 +155,19 @@ function App() {
               </a>
             </Col>
           </Row>
+          <section id="home"></section>
+          <Section
+            id="about"
+            title="About Me"
+            content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development."
+            image="images/aboutMe.jpeg"
+            imageLeft={true}
+          />
 
-          <Section title="About Me" content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development." image="images/aboutMe.jpeg" imageLeft={true} />
-          <Section title="Skills" content={[
+          <Section
+            id="skills"
+            title="Skills"
+            content={[
               "Programming Languages: Java, Python (Django), JavaScript",
               "Frameworks & Libraries: Spring Boot, React.js",
               "Cloud & DevOps: AWS (EC2, S3, IAM, Lambda), Docker, Kubernetes, Terraform, CI/CD",
@@ -163,8 +177,16 @@ function App() {
             image="/images/skills1.png"
             imageLeft={false}
           />
+
           <ProjectSection projects={projects} />
-          <Section title="Contact Me" content="Reach out for collaboration opportunities via LinkedIn or email." image="/contact.jpg" imageLeft={false} />
+
+          <Section
+            id="contact"
+            title="Contact Me"
+            content="Reach out for collaboration opportunities via LinkedIn or email."
+            image="/contact.jpg"
+            imageLeft={false}
+          />
         </Container>
       </div>
     </div>

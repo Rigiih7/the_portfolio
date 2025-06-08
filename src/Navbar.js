@@ -1,34 +1,38 @@
-// Navbar.js
-import React from 'react';
-import { Navbar as BootstrapNavbar, Nav, Container } from 'react-bootstrap';
-import './Navbar.css';
+import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-scroll";
+import './Navbar.css'; 
 
 const CustomNavbar = () => {
-  const handleScroll = (e, id) => {
-    e.preventDefault();
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <BootstrapNavbar expand="lg" className="navbar-dark-bg fixed-top">
+    <Navbar
+      expand="lg"
+      fixed="top"
+      variant="dark"
+      className="navbar-dark-bg"
+      // You can add style here if needed, but your CSS should cover width and positioning
+    >
       <Container>
-        <BootstrapNavbar.Brand href="#home" onClick={(e) => handleScroll(e, 'about')} className="fw-bold text-orange">
-          Rigiih
-        </BootstrapNavbar.Brand>
-        <BootstrapNavbar.Toggle aria-controls="navbarScroll" />
-        <BootstrapNavbar.Collapse id="navbarScroll">
-          <Nav className="ms-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link href="#about" onClick={(e) => handleScroll(e, 'about')}>About</Nav.Link>
-            <Nav.Link href="#skills" onClick={(e) => handleScroll(e, 'skills')}>Skills</Nav.Link>
-            <Nav.Link href="#projects" onClick={(e) => handleScroll(e, 'projects')}>Projects</Nav.Link>
-            <Nav.Link href="#contact" onClick={(e) => handleScroll(e, 'contact')}>Contact</Nav.Link>
+        <Link to="home" smooth={true} duration={500} offset={-550} className="nav-link"> Brian Mwirigi</Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <Link to="about" smooth={true} duration={500} offset={-80} className="nav-link">
+              About
+            </Link>
+            <Link to="skills" smooth={true} duration={500} offset={-80} className="nav-link">
+              Skills
+            </Link>
+            <Link to="projects" smooth={true} duration={500} className="nav-link">
+              Projects
+            </Link>
+            <Link to="contact" smooth={true} duration={500} className="nav-link">
+              Contact
+            </Link>
           </Nav>
-        </BootstrapNavbar.Collapse>
+        </Navbar.Collapse>
       </Container>
-    </BootstrapNavbar>
+    </Navbar>
   );
 };
 
