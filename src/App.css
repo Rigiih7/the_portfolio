@@ -138,29 +138,38 @@
   }
 }
 
+/* App.css */
+
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-*, *::before, *::after {
-  box-sizing: inherit;
+.app-container {
+  display: flex;
+  width: 100%;
 }
 
-/* Optional for debugging */
+.content-container {
+  flex: 1;
+  padding: 0; /* Optional: adjust spacing here */
+}
+
+.container {
+  max-width: 100%; /* Override Bootstrap's default max width */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+body {
+  padding-top: 28px; /* Adjust this based on your navbar height */
+}
+
 @media (max-width: 768px) {
-  .img-fluid {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .skills-list li {
-    width: 100% !important;
-    margin-left: auto;
-    margin-right: auto;
+  body {
+    padding-top: 38px; /* Slightly more for mobile collapsed navbar */
   }
 }
 
