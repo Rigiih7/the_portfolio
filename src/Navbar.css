@@ -20,13 +20,19 @@
   color: #FFA500;
 }
 
-.custom-brand {
-  margin-left: 18rem;
+.custom-brand,
+.custom-nav {
   font-weight: 700;
-  
 }
 
-.custom-nav {
-  margin-right: 15rem;
-   font-weight: 700;
+/* Apply large spacing only on screens ≥ 992px (Bootstrap's lg breakpoint) */
+@media (min-width: 992px) {
+  .custom-brand {
+    margin-left: 18rem;
+  }
+
+  .custom-nav {
+    margin-right: 15rem;
+  }
 }
+
