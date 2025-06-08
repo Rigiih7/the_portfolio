@@ -19,3 +19,14 @@
 .text-orange {
   color: #FFA500;
 }
+
+.custom-brand {
+  margin-left: 18rem;
+  font-weight: 700;
+  
+}
+
+.custom-nav {
+  margin-right: 15rem;
+   font-weight: 700;
+}

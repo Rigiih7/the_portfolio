@@ -20,7 +20,7 @@ const CustomNavbar = () => {
       onToggle={() => setExpanded(prev => !prev)}
     >
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand className="custom-brand">
           <Link
             to="home"
             smooth={true}
@@ -34,7 +34,7 @@ const CustomNavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto custom-nav">
             {['about', 'skills', 'projects', 'contact'].map(section => (
               <Link
                 key={section}
