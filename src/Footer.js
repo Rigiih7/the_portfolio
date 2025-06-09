@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer-dark text-center text-white py-4 mt-5">
       <Container>
-        <p>&copy; {new Date().getFullYear()} Rigiih | Built with 💻</p>
+        <div style={{ padding: '20px 5px' }}>@Rigiih {new Date().getFullYear()}</div>
       </Container>
     </footer>
   );

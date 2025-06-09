@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import CustomNavbar from './Navbar';
+import Footer from './Footer';
 import { Element } from 'react-scroll';
 import './App.css';
 
@@ -189,6 +190,7 @@ function App() {
           />
         </Container>
       </div>
+      <Footer />
     </div>
   );
 }
