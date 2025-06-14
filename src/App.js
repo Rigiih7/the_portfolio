@@ -54,7 +54,7 @@ const ProjectSection = ({ projects }) => {
               <>
                 <Col md={6}>
                   <h3 className="fw-bold">{project.title}</h3>
-                  <p>{project.description}</p>
+                  <p className="project-description">{project.description}</p>
                 </Col>
                 <Col md={6} className="text-center">
                   <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
@@ -67,7 +67,7 @@ const ProjectSection = ({ projects }) => {
                 </Col>
                 <Col md={6}>
                   <h3 className="fw-bold">{project.title}</h3>
-                  <p>{project.description}</p>
+                  <p className="project-description">{project.description}</p>
                 </Col>
               </>
             )}
@@ -109,23 +109,24 @@ function App() {
   const projects = [
     {
       title: "Spotcash Mobile Banking System",
-      description: "SpotCash is a Tangazoletu Mobile Banking platform used by more than 70 financial institutions in Kenya.",
+      description: "SpotCash is Tangazoletu’s mobile banking platform used by over 30 licensed financial institutions in Kenya, including banks, microfinance institutions, and SACCOs. I have been part of the development team, maintaining the codebase, implementing new features, and fixing bugs.",
       image: "images/project4.png"
     },
     {
-      title: "SpotPay",
-      description: "SpotPay is a creative payment solution to make simple, easy payments.",
-      image: "/images/project4.png"
+      title: "SmartTeller",
+      description: 
+      "SmarteTeller is  a Multitenant system that helps banking activities form opening till in the morning, normal bank transactions like deposit and withdrawal, opening accounts and closing till in the evening. I had a chance to start the backend of this project from scratch and sharpened my skills in java sspringboot ( spring security, jwt authentication and rest APis development)",
+      image: "/images/SmartTeller.jpeg"
     },
     {
-      title: "EDMS",
-      description: "The system streamlines document storage, sharing, and accessibility.",
+      title: "LOOP USSD",
+      description: "I’ve had the opportunity and honor to serve as the Solutions Architect responsible for designing the Loop USSD solution. My responsibilities include defining API requirements, guiding developers, creating Technical Requirement Specifications (TRS), and designing API invocation flows. The supported services span user onboarding, top-ups, bill payments, loan management, goal savings, investments, peer-to-peer money transfers, and balance inquiries.",
       image: "images/project6.png"
     },
     {
-      title: "Spotcash Mobile Banking System",
-      description: "SpotCash is a Tangazoletu Mobile Banking platform used by more than 70 financial institutions in Kenya.",
-      image: "images/project4.png"
+      title: "Loop API Sandbox",
+      description: "The Loop API Sandbox is a secure testing environment for third-party integrations with Loop’s digital banking services. As the Solutions Architect, I’m responsible for validating and onboarding APIs, ensuring they meet business and technical requirements. I also oversee the implementation of security measures, including a signature service that generates unique request signatures to authenticate and protect every API call.",
+      image: "images/APIsandbox.png"
     }
   ];
 
@@ -168,7 +169,7 @@ function App() {
           <Section
             id="about"
             title="About Me"
-            content="Experienced Solutions Architect specializing in AWS Cloud, DevOps, and backend development."
+            content="I’m an experienced Solutions Architect with a strong focus on AWS Cloud, DevOps, and backend development. I design scalable, secure systems and lead technical implementations that bridge infrastructure and software. With a passion for automation, cloud-native architecture, and clean backend design, I help teams build reliable, future-proof digital solutions."
             image="images/aboutMe.jpeg"
             imageLeft={true}
           />
