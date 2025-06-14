@@ -40,6 +40,9 @@ const Section = ({ title, content, image, imageLeft, id, className }) => {
   );
 };
 
+
+
+
 const ProjectSection = ({ projects }) => {
   return (
     <Element name="projects" className="my-5">
@@ -52,20 +55,30 @@ const ProjectSection = ({ projects }) => {
           <Row className="align-items-center my-4" key={index}>
             {index % 2 === 0 ? (
               <>
-                <Col md={6}>
+                <Col xs={12} md={6} className="order-1 order-md-1">
                   <h3 className="fw-bold">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
                 </Col>
-                <Col md={6} className="text-center">
-                  <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
+                <Col xs={12} md={6} className="text-center order-2 order-md-2">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{ width: '250px', height: 'auto' }}
+                    className="rounded"
+                  />
                 </Col>
               </>
             ) : (
               <>
-                <Col md={6} className="text-center">
-                  <img src={project.image} alt={project.title} style={{ width: '250px', height: 'auto' }} className="rounded" />
+                <Col xs={12} md={6} className="text-center order-2 order-md-1">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{ width: '250px', height: 'auto' }}
+                    className="rounded"
+                  />
                 </Col>
-                <Col md={6}>
+                <Col xs={12} md={6} className="order-1 order-md-2">
                   <h3 className="fw-bold">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
                 </Col>
@@ -77,6 +90,12 @@ const ProjectSection = ({ projects }) => {
     </Element>
   );
 };
+
+
+
+
+
+
 
 function App() {
   const githubUsername = 'Rigiih7';
