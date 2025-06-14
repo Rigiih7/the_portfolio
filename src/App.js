@@ -7,7 +7,7 @@ import Footer from './Footer';
 import { Element } from 'react-scroll';
 import './App.css';
 
-const Section = ({ title, content, image, imageLeft, id }) => {
+const Section = ({ title, content, image, imageLeft, id, className }) => {
   return (
     <Element name={id} className="my-5">
       <Row className="align-items-center">
@@ -27,7 +27,7 @@ const Section = ({ title, content, image, imageLeft, id }) => {
               ))}
             </ul>
           ) : (
-            <p>{content}</p>
+             <p className={className}>{content}</p>
           )}
         </Col>
         {!imageLeft && (
@@ -169,11 +169,11 @@ function App() {
           <Section
             id="about"
             title="About Me"
+            className="project-description"
             content="I’m an experienced Solutions Architect with a strong focus on AWS Cloud, DevOps, and backend development. I design scalable, secure systems and lead technical implementations that bridge infrastructure and software. With a passion for automation, cloud-native architecture, and clean backend design, I help teams build reliable, future-proof digital solutions."
             image="images/aboutMe.jpeg"
             imageLeft={true}
           />
-
           <Section
             id="skills"
             title="Skills"
