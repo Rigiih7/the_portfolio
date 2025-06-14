@@ -44,7 +44,10 @@ const ProjectSection = ({ projects }) => {
   return (
     <Element name="projects" className="my-5">
       <Container>
-        <h2 className="fw-bold text-center">Projects</h2>
+        <div className="section-title-container">
+          <h2 className="fw-bold">Projects</h2>
+        </div>
+
         {projects.map((project, index) => (
           <Row className="align-items-center my-4" key={index}>
             {index % 2 === 0 ? (
@@ -118,6 +121,11 @@ function App() {
       title: "EDMS",
       description: "The system streamlines document storage, sharing, and accessibility.",
       image: "images/project6.png"
+    },
+    {
+      title: "Spotcash Mobile Banking System",
+      description: "SpotCash is a Tangazoletu Mobile Banking platform used by more than 70 financial institutions in Kenya.",
+      image: "images/project4.png"
     }
   ];
 
