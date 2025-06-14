@@ -6,6 +6,7 @@ import CustomNavbar from './Navbar';
 import Footer from './Footer';
 import { Element } from 'react-scroll';
 import './App.css';
+import ContactForm from './contactForm';
 
 const Section = ({ title, content, image, imageLeft, id, className }) => {
   return (
@@ -128,13 +129,13 @@ function App() {
   const projects = [
     {
       title: "Spotcash Mobile Banking System",
-      description: "SpotCash is Tangazoletu’s mobile banking platform used by over 30 licensed financial institutions in Kenya, including banks, microfinance institutions, and SACCOs. I have been part of the development team, maintaining the codebase, implementing new features, and fixing bugs.",
-      image: "images/project4.png"
+      description: "SpotCash is Tangazoletu’s mobile banking platform used by over 70 licensed financial institutions in Kenya, including banks, microfinance institutions, and SACCOs. I have been part of the development team, maintaining the codebase, implementing new features, and fixing bugs.",
+      image: "images/spotCash.png"
     },
     {
       title: "SmartTeller",
       description: 
-      "SmarteTeller is  a Multitenant system that helps banking activities form opening till in the morning, normal bank transactions like deposit and withdrawal, opening accounts and closing till in the evening. I had a chance to start the backend of this project from scratch and sharpened my skills in java sspringboot ( spring security, jwt authentication and rest APis development)",
+      "SmarteTeller is  a Multitenant system that helps banking activities form opening till in the morning, normal bank transactions like deposit and withdrawal, opening accounts and closing till in the evening. I had a chance to start the backend of this project from scratch and sharpened my skills in java sspringboot ( spring security, jwt authentication and rest APIs development)",
       image: "/images/SmartTeller.jpeg"
     },
     {
@@ -208,14 +209,10 @@ function App() {
           />
 
           <ProjectSection projects={projects} />
+<Element name="contact">
+  <ContactForm />
+</Element>
 
-          <Section
-            id="contact"
-            title="Contact Me"
-            content="Reach out for collaboration opportunities via LinkedIn or email."
-            image="/contact.jpg"
-            imageLeft={false}
-          />
         </Container>
       </div>
       <Footer />
