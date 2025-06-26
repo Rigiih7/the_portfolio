@@ -1,7 +1,7 @@
 # The_portfolio 
 
 # Link to deployed site
-https://the-portfolio-tawny.vercel.app/
+https:brianmwirigi.com
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
